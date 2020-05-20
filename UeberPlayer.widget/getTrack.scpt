@@ -77,6 +77,7 @@ if playingState and my songChanged() then
     if appName is "Spotify" then
       my extractSpotifyArt()
     else if appName is "Music" then
+    log "extract"
       my extractMusicArt()
     end if
   else    -- Else, touch the cached file to keep it "fresh"
@@ -145,7 +146,7 @@ on generateArtFilename(str)
   set charsToCheck to characters of str
   set retList to {}
   repeat with i from 1 to count charsToCheck
-    if {charsToCheck's item i} is not in {" ", "\""} then
+    if {charsToCheck's item i} is not in {" ", "\"", "/", ",", ":", "?"} then
       set retList's end to charsToCheck's item i
     end if
   end repeat
